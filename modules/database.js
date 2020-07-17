@@ -9,8 +9,15 @@ var UserSechema=new mongoose.Schema({
     createddate : String,
 })
 
+var RecordsSechema=new mongoose.Schema({
+    currentoffset: Number,
+    totalreacords: Number ,
+    currentdate : String,
+  
+})
 
 
-var Mobilerecords = mongoose.model('monileRecords', UserSechema);
 
-module.exports= {Mobilerecords,conn};
+var Mobilerecords = mongoose.model('mobileRecords', UserSechema);
+var TotalMobilerecords = mongoose.model('totalRecords', RecordsSechema);
+module.exports= {Mobilerecords,TotalMobilerecords,conn};
