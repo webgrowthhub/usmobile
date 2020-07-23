@@ -26,7 +26,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 
-cron.schedule("*/5 * * * * *", function() {
+cron.schedule("*/4 * * * * *", function() {
 
   var getroww33=AllModel.TotalMobilerecords.find({_id : "5f0d9da752e91a0b3c4fb864"});
   getroww33.exec((errorr22,TotalrecodDtataa3)=>{
@@ -35,6 +35,7 @@ cron.schedule("*/5 * * * * *", function() {
 var registermonth=myDate.getMonth()+1;  
 var registeryear=myDate.getFullYear(); 
 var Datee= registerdate + "-" + registermonth + "-" +  registeryear;
+
     if(TotalrecodDtataa3[0].currentdate == Datee){
       var getroww=AllModel.TotalMobilerecords.find({_id : "5f0d9da752e91a0b3c4fb864"});
       getroww.exec((errorr,TotalrecodDtat)=>{
