@@ -26,7 +26,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 
-cron.schedule("*/3 * * * * *", function() {
+cron.schedule("*/5 * * * * *", function() {
 
   var getroww33=AllModel.TotalMobilerecords.find({_id : "5f0d9da752e91a0b3c4fb864"});
   getroww33.exec((errorr22,TotalrecodDtataa3)=>{
