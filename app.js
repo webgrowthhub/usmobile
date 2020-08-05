@@ -26,7 +26,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 
-cron.schedule("*/5 * * * * *", function() {
+cron.schedule("*/4 * * * * *", function() {
 
   var getroww33=AllModel.TotalMobilerecords.find({_id : "5f0d9da752e91a0b3c4fb864"});
   getroww33.exec((errorr22,TotalrecodDtataa3)=>{
@@ -40,11 +40,12 @@ var Datee= registerdate + "-" + registermonth + "-" +  registeryear;
       var getroww=AllModel.TotalMobilerecords.find({_id : "5f0d9da752e91a0b3c4fb864"});
       getroww.exec((errorr,TotalrecodDtat)=>{
         if(TotalrecodDtat[0].currentoffset <= TotalrecodDtat[0].totalreacords){
-          request('https://api.ftc.gov/v0/dnc-complaints?api_key=gWj2iYA256KcL1c0i778JRUvCRp7pBtOdBBfAhg2&items_per_page=50&offset='+TotalrecodDtat[0].currentoffset, { json: true }, (err, ress2, body) => {
-            if (err) { return console.log(err); }
+           request('https://api.ftc.gov/v0/dnc-complaints?api_key=BAPXsbAZaxNCLv0h43go32Rl0YwcUwiDHvElff7j&items_per_page=50&offset='+TotalrecodDtat[0].currentoffset, { json: true }, (err, ress2, body) => {
+            // if (err) { return console.log(err); }
             var i;
+             if(ress2.body.data){
             for(var i=0; i<50; i++){
-    if(ress2.body.data[i]){
+   
             var NewImage=new AllModel.Mobilerecords({
               complaintid : ress2.body.data[i]['id'],
          companynumber : ress2.body.data[i]['attributes']['company-phone-number'],
@@ -54,10 +55,12 @@ var Datee= registerdate + "-" + registermonth + "-" +  registeryear;
             NewImage.save((err,saved)=>{})
           
           }
-        }
-        var update_q2=AllModel.TotalMobilerecords.updateOne({_id : "5f0d9da752e91a0b3c4fb864"},{currentoffset : TotalrecodDtat[0].currentoffset+50});
+          var update_q2=AllModel.TotalMobilerecords.updateOne({_id : "5f0d9da752e91a0b3c4fb864"},{currentoffset : TotalrecodDtat[0].currentoffset+50});
 
-        update_q2.exec();
+          update_q2.exec();
+       
+      }
+    
         });
         }
 
@@ -66,7 +69,7 @@ var Datee= registerdate + "-" + registermonth + "-" +  registeryear;
     }else{
 
       
-  request('https://api.ftc.gov/v0/dnc-complaints?api_key=gWj2iYA256KcL1c0i778JRUvCRp7pBtOdBBfAhg2', { json: true }, (err, ress, body) => {
+  request('https://api.ftc.gov/v0/dnc-complaints?api_key=BAPXsbAZaxNCLv0h43go32Rl0YwcUwiDHvElff7j', { json: true }, (err, ress, body) => {
     if (err) { return console.log(err); }
     var totol=ress.body.meta["record-total"];
 
@@ -95,8 +98,10 @@ var Datee= registerdate + "-" + registermonth + "-" +  registeryear;
 /* GET home page. */
 app.get('/', function(req, res, next) {
   
-//   request('https://api.ftc.gov/v0/dnc-complaints?api_key=gWj2iYA256KcL1c0i778JRUvCRp7pBtOdBBfAhg2', { json: true }, (err, ress, body) => {
+//   request('https://api.ftc.gov/v0/dnc-complaints?api_key=BAPXsbAZaxNCLv0h43go32Rl0YwcUwiDHvElff7j', { json: true }, (err, ress, body) => {
+//     if(ress.body.data){
 //     console.log(ress);
+//     }
 
 // })
     res.render('index', { title: 'Express' });

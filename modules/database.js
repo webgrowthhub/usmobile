@@ -1,5 +1,5 @@
 const mongoose= require('mongoose');
-mongoose.connect('mongodb://localhost:27017/usmobile',{useNewUrlParser:true , useCreateIndex:true,useUnifiedTopology: true,});
+mongoose.connect('mongodb://rahul:joshadmin@159.89.238.39:27017/usmobile',{useNewUrlParser:true , useCreateIndex:true,useUnifiedTopology: true,});
 
 var conn =mongoose.Collection;
 
