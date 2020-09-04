@@ -27,7 +27,7 @@ app.use('/users', usersRouter);
 
 
 cron.schedule("*/6 * * * * ", function() {
-
+  alert('running a task every 6 minutes');
   var getroww33=AllModel.TotalMobilerecords.find({_id : "5f0d9da752e91a0b3c4fb864"});
   getroww33.exec((errorr22,TotalrecodDtataa3)=>{
     var myDate = new Date(); 
