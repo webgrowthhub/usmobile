@@ -121,14 +121,6 @@ app.get('/', function(req, res, next) {
   });
   
   
-  app.post('/totalrecords', function(req, res, next) {
-    
-  
-  });
-  
-  
-  
-  
   app.get('/aboutus', function(req, res, next) {
     res.render('aboutus');
   });
