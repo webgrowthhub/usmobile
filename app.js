@@ -160,18 +160,6 @@ app.get('/', function(req, res, next) {
   
   
   
-  // router.get("/add",function(req,res){
-  //   console.log("hereee");
-  //   var NewImage=new AllModel.Mobilerecords({
-  //     username: 'Rahul',
-     
-  //   });
-  //   NewImage.save((err,saved)=>{
-  //     if(saved){
-  //       return res.redirect("/");
-  //     }
-  //   })
-  // })
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
