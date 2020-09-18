@@ -9,6 +9,9 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var AllModel=require("./modules/database");
 const cron = require("node-cron");
+const querystring = require('querystring');
+const expressip = require('express-ip');
+
 
 var app = express();
 
@@ -21,6 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(expressip().getIpInfoMiddleware);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -108,7 +112,7 @@ app.get('/', function(req, res, next) {
   });
 
   app.get('/check', function(req, res, next) {
-    console.log("here");
+    res.send(req.ipInfo);
   });
   
   
@@ -128,14 +132,32 @@ app.get('/', function(req, res, next) {
     res.render('faq');
   });
   
-  app.get('/detail', function(req, res, next) {
-    res.render('detail');
+  app.get('/phone-number', function(req, res, next) {
+    var ph_no=req.query.ph_no;
+    var get_res=AllModel.Mobilerecords.find({ companynumber : ph_no }).countDocuments();
+    get_res.exec((err,Records)=>{
+      if(Records > 0){
+        res.render('detail',{CurrentRecord: ph_no});
+      }else{
+        res.render('detail',{CurrentRecord: ''});
+      }
+    })
+    
   });
   
   
-  app.get('/getalldata', function(req, res, next) {
+  app.post('/get_results', function(req, res, next) {
 
-  
+  var phon_no=req.body.phone_no;
+  var get_res=AllModel.Mobilerecords.find({ 'companynumber': {'$regex': phon_no} });
+  get_res.exec((err,data)=>{
+    if(data[0]){
+      res.send(data);
+    }else{
+      res.send('false');
+    }
+    
+  })
   
   });
   
@@ -170,9 +192,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.get('/check', (req,res)=>{  
- console.log("Fds");
-  
-});
+
 
 module.exports = app;

@@ -27,11 +27,63 @@
 <script src="http://code.jquery.com//jquery-1.12.4.js"></script>
 <script src="../javascripts/vc-accordion.js"></script>
 <script src="http://code.jquery.com//ui/1.12.1/jquery-ui.js"></script>
+<script type='text/javascript' src='../javascripts/jquery-input-mask-phone-number.js'></script>
+      <script type='text/javascript' src='../javascripts/jquery-input-mask-phone-number.min'></script>
 <script>
   $("#mobile-navigation-btn").click(function(){
 $("#mobile-navigation").toggleClass("view");
 });
 </script>
+
+<script>
+   $(function(){
+      $('#customPhonenno').usPhoneFormat({
+    format:'(xxx) xxx-xxxx'
+  });
+
+  $('.customPhonenno').text(function(i, text) {
+    return text.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+});
+
+  $('#customPhonenno').on("keyup",function(){
+     var inputNo=$("#customPhonenno").val();
+var cleanNumber =  inputNo.replace(/[^\d.]/g, ''); 
+if(cleanNumber.toString().length >= 5){
+    $.ajax({
+               type: "POST",
+               url: "/get_results",
+               data: {'phone_no': cleanNumber},
+               success: function(r){
+                  $(".curentResult").show();
+                  $("#result_ui").html('');
+                 
+                  if(r == 'false'){
+                     $("#result_ui").append('<li class="li_number" >No record Found</li>');
+        
+                  }else{
+                     r.forEach(function (item) { 
+                     
+                     $("#result_ui").append('<li class="li_number" data-name="'+item.companynumber+'" data-attr="http://localhost/?phone-number='+item.companynumber+'"><a href="http://localhost/phone-number?ph_no='+item.companynumber+'">'+item.companynumber+'</a></li>');
+        }); 
+                  }
+          
+               // location.reload();
+               },
+               error: function (e) {
+                  //   console.log("some error", e);
+               }
+            });
+}
+        
+  })
+
+
+ 
+
+
+   })
+</script>
+
 
 <script>
 //      $(function(){

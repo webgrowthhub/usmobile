@@ -16,8 +16,16 @@ var RecordsSechema=new mongoose.Schema({
   
 })
 
+var MArkSechema=new mongoose.Schema({
+    companynumber: String,
+    IpAdress: String,
+    MarkTime: String
+   
+})
+
 
 
 var Mobilerecords = mongoose.model('mobileRecords', UserSechema);
 var TotalMobilerecords = mongoose.model('totalRecords', RecordsSechema);
-module.exports= {Mobilerecords,TotalMobilerecords,conn};
+var MarkedRecords = mongoose.model('MArkedRecords', MArkSechema);
+module.exports= {Mobilerecords,TotalMobilerecords,conn,MarkedRecords};

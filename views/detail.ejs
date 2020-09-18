@@ -31,10 +31,17 @@
          <div id="fulltitle" class="titlebar">
 				<div class="container">
 					<div id="title" class="ten columns">
-						<h1>(208) 262-0000</h1>
+						<h1><%=CurrentRecord   %></h1>
 					</div>
 					<div id="breadcrumbs" class="six columns">
-						<div id="crumbs"><a href="index.html">US Phone Number Lookup</a> / <span class="current"> (208) 262-0000</span></div>					</div>
+						<div id="crumbs"><a href="index.html">US Phone Number Lookup</a> / <span class="current"> 
+                     <% if ( typeof(CurrentRecord) !='undefined') { %>
+
+                        <%=CurrentRecord   %>
+
+                        <% } %>
+                     
+                  </span></div>					</div>
 				</div>
 			</div>
          <div class="container"  >
@@ -46,14 +53,34 @@
                            <div class="minti_boxedholder   clearfix" style="padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px; border-color: #efefef; ">
                               <div class="wpb_text_column wpb_content_element ">
                                  <div class="wpb_wrapper">
-                                    <h2>Information about (208) 262-0000</h2>
+                                    <h2>Information about 
+
+                                       <% if ( typeof(CurrentRecord) !='undefined') { %>
+
+                                          <span class="customPhonenno"> <%=CurrentRecord   %></span>
+                  
+                                          <% } %>
+                                    </h2>
                                  </div>
                               </div>
                            </div>
                            <div class="minti_boxedholder   clearfix" style="padding: 10px 0px 10px 10px; margin: 10px 0px 10px 0px; border-radius: 3px; border-width: 4px; border-color: #efefef; ">
                               <div class="wpb_text_column wpb_content_element ">
                                  <div class="wpb_wrapper">
-                                    <p>Below is the caller ID information for <strong>(208) 262-0000</strong>. Please feel free to leave any feedback. You can flag the number as “Safe” or “Unsafe” and leave any relevant comments concerning the owner of <strong>(208) 262-0000</strong>.</p>
+                                    <p>Below is the caller ID information for <strong>
+
+                                       <% if ( typeof(CurrentRecord) !='undefined') { %>
+
+                                          <span class="customPhonenno"><%=CurrentRecord   %></span>
+                  
+                                          <% } %>
+                                    </strong>. Please feel free to leave any feedback. You can flag the number as “Safe” or “Unsafe” and leave any relevant comments concerning the owner of <strong>
+                                       <% if ( typeof(CurrentRecord) !='undefined') { %>
+
+                                          <span class="customPhonenno"><%=CurrentRecord   %></span>
+                  
+                                          <% } %>
+                                    </strong>.</p>
                                  </div>
                               </div>
                            </div>
@@ -62,8 +89,16 @@
                               <div class="wpb_text_column wpb_content_element ">
                                  <div class="wpb_wrapper">
                                     <div class="caller-id-main">
-                                       <p style="text-align: center;"><span style="font-size: 36pt; color: #ff9900;"><strong>(208) 262-0000</strong></span></p>
-                                       <p style="text-align: center;"><span style="font-size: 18pt; color: #999999;">VA, Virginia</span></p>
+                                       <p style="text-align: center;"><span style="font-size: 36pt; color: #ff9900;" class="customPhonenno"><strong>
+                                          <% if (CurrentRecord) { %>
+
+                                            <%=CurrentRecord   %>
+                     
+                                             <% }else{ %>
+                                                404 Not Found!<%=CurrentRecord %>
+                                            <% } %>
+                                       </strong></span></p>
+                                       <p style="text-align: center;"><span style="font-size: 18pt; color: #999999;"></span></p>
                                     </div>
                                  </div>
                               </div>
@@ -85,11 +120,13 @@
                                        <th scope=&quot;col&quot;>Timestamp of Rating</th>
                                        </tr>
                                        </thead>
-                                       <tbody> <tr>
+                                       <tbody> 
+                                          <tr>
                                        <td>101.0.32.102 Jammu, IN</td>
                                        <td>Marked (208) 262-0000 as <button class=&quot;badge badge-success&quot;>Safe</button></td>
                                        <td>1 day, 3 hours, 53 minutes ago</td>
-                                       </tr> </tbody>
+                                       </tr>
+                                     </tbody>
                                        </table>
                                        </div>
                                        </div>
@@ -111,6 +148,11 @@
                                                             </tr>
                                                          </thead>
                                                          <tbody>
+                                                            <tr>
+                                                               <td>103.223.8.150 Bathinda, IN</td>
+                                                               <td>Marked (312) 222-2570 as <button class="badge badge-danger">Unsafe</button></td>
+                                                               <td> ago</td>
+                                                           </tr>
                                                             <tr>
                                                                <td>101.0.32.102 Jammu, IN</td>
                                                                <td>Marked (208) 262-0000 as <button class="badge badge-success">Safe</button></td>
@@ -146,32 +188,43 @@
                                           <label class="switch-on-off" style="display: none;"><input type="checkbox" class="input-on-off"><span class="slider-on-off round"></span></label>
                                        </div>
                                     </div>
-                                    <span class="hidden-id" id="like-dislike-post-id">2082620000</span><span class="hidden-id ldc-post-total-likes">1</span><span class="hidden-id ldc-post-total-dislikes">0</span><span class="hidden-id ldc-lk-dk-type">cookie-check</span><span class="hidden-id ldc-page-title">(208) 262-0000</span><span class="hidden-id ldc-share-it">no</span>
+                                   
                                  </div>
                               </div>
                            </div>
-                           <h2 class="headline font-inherit fontsize-l fontweight-700 lh-inherit align-left transform-inherit " style="margin: 10px 0 5px 0;">Leave a Comment about this Phone Number</h2>
+                           <h2 class="headline font-inherit fontsize-l fontweight-700 lh-inherit align-left transform-inherit " style="margin: 10px 0 5px 0;">
+                              <% if (CurrentRecord) { %>
+                              Leave a Comment about this Phone Number
+                              <% } %>
+                           </h2>
                            <div class="minti_boxedholder   clearfix" style="padding: 20px 20px 20px 20px; margin: 0px 0px 0px 0px; border-radius: 3px; border-width: 4px; border-color: #efefef; ">
                               <div class="wpb_text_column wpb_content_element ">
                                  <div class="wpb_wrapper">
-                                    <div id="disqus_thread"><iframe id="dsq-app8174" name="dsq-app8174" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="https://disqus.com/embed/comments/?base=default&amp;f&amp;t_u=file%3A%2F%2F%2FD%3A%2Fabhishek%2520data%2Fwork%2520time%2F2020%2Frahul%2Fphone-number-lookup%2Fpnl%2Fusphonenumberlookup.com%2Fphone-number%2F2082620000%2Findex.html&amp;t_d=Phone%20Number%20%7C%20US%20Phone%20Number%20Lookup&amp;t_t=Phone%20Number%20%7C%20US%20Phone%20Number%20Lookup&amp;s_o=default#version=1799fdfd5fbe62e18668aa208e73c21f" horizontalscrolling="no" verticalscrolling="no" style="height: 75px !important;"></iframe></div>
-                                    <script>
-                                       /**
-                                       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                                       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-                                       /*
-                                       var disqus_config = function () {
-                                       this.page.url = https://usphonenumberlookup.com/phone-number/2082620000/;  // Replace PAGE_URL with your page's canonical URL variable
-                                       this.page.identifier = 2082620000; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                                       };
-                                       */
-                                       (function() { // DON'T EDIT BELOW THIS LINE
-                                       var d = document, s = d.createElement('script');
-                                       s.src = '../../../us-phone-number-lookup.disqus.com/embed.js';
-                                       s.setAttribute('data-timestamp', +new Date());
-                                       (d.head || d.body).appendChild(s);
-                                       })();
-                                    </script>
+                                    
+                                    <% if (CurrentRecord) { %>
+                                       <div id="disqus_thread"><iframe id="dsq-app8174" name="dsq-app8174" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="https://disqus.com/embed/comments/?base=default&amp;f&amp;t_u=file%3A%2F%2F%2FD%3A%2Fabhishek%2520data%2Fwork%2520time%2F2020%2Frahul%2Fphone-number-lookup%2Fpnl%2Fusphonenumberlookup.com%2Fphone-number%2F2082620000%2Findex.html&amp;t_d=Phone%20Number%20%7C%20US%20Phone%20Number%20Lookup&amp;t_t=Phone%20Number%20%7C%20US%20Phone%20Number%20Lookup&amp;s_o=default#version=1799fdfd5fbe62e18668aa208e73c21f" horizontalscrolling="no" verticalscrolling="no" style="height: 75px !important;"></iframe></div>
+                                       <script>
+
+                                          /**
+                                          *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                                          *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                                          /*
+                                          var disqus_config = function () {
+                                          this.page.url = https://usphonenumberlookup.com/phone-number/3122222570/;  // Replace PAGE_URL with your page's canonical URL variable
+                                          this.page.identifier = 3122222570; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                          };
+                                          */
+                                          (function() { // DON'T EDIT BELOW THIS LINE
+                                          var d = document, s = d.createElement('script');
+                                          s.src = 'https://us-phone-number-lookup.disqus.com/embed.js';
+                                          s.setAttribute('data-timestamp', +new Date());
+                                          (d.head || d.body).appendChild(s);
+                                          })();
+                                          </script>
+
+
+                                       <% } %>
+                                   
                                     <noscript>Please enable JavaScript to view the <a href='https://disqus.com/?ref_noscript'>comments powered by Disqus.</a></noscript>
                                  </div>
                               </div>
