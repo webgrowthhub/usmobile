@@ -45,6 +45,23 @@ $("#mobile-navigation").toggleClass("view");
     return text.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
 });
 
+$("#post-like-btn").on("click",function(){
+   var company_no=$(this).data("id");
+   alert(company_no);
+   $.ajax({
+               type: "POST",
+               url: "/mark_number",
+               data: {'phone_no': company_no},
+               success: function(r){
+                
+               // location.reload();
+               },
+               error: function (e) {
+                  //   console.log("some error", e);
+               }
+            });
+})
+
   $('#customPhonenno').on("keyup",function(){
      var inputNo=$("#customPhonenno").val();
 var cleanNumber =  inputNo.replace(/[^\d.]/g, ''); 
