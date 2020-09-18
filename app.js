@@ -112,7 +112,7 @@ app.get('/', function(req, res, next) {
   });
 
   app.get('/check', function(req, res, next) {
-    res.send(req.ipInfo.ip);
+    res.send(req.ipInfo);
   });
   
   
