@@ -190,10 +190,20 @@
                                        <div class="post-like-dislike-plusCounter-container" style="display: block;">
                                           <div class="button-container-likes-dislike">
                                              <button class="btn-start-1" id="post-like-btn" data-id="<%=CurrentRecord   %>" style="background: rgb(51, 196, 99);">
-                                             <i class="fa fa-check-square"></i><span>Safe Caller</span> | <b>1</b>
+                                             <i class="fa fa-check-square"></i><span>Safe Caller</span> | <b>
+                                                <% if (Safe) { %>
+
+                                                   <%=Safe %>
+                                               <% } %>
+                                             </b>
                                              </button>
                                              <button class="btn-start-1" id="post-dislike-btn" data-id="<%=CurrentRecord   %>" style="background: rgb(174, 66, 63);">
-                                             <i class="fa fa-exclamation-triangle"></i><span>Unsafe Caller</span> | <b>0</b>
+                                             <i class="fa fa-exclamation-triangle"></i><span>Unsafe Caller</span> | <b>
+                                                <% if (Unsafe) { %>
+
+                                                   <%=Unsafe %>
+                                               <% } %>
+                                             </b>
                                              </button>
                                              <label class="switch-on-off" style="display: none;"><input type="checkbox" class="input-on-off"><span class="slider-on-off round"></span></label>
                                           </div>

@@ -162,7 +162,15 @@ app.get('/', function(req, res, next) {
       if(Records > 0){
         var get_markedres=AllModel.MarkedRecords.find({ companynumber : ph_no }).limit(4);
         get_markedres.exec((err,Markedrecords)=>{
-          res.render('detail',{CurrentRecord: ph_no,Alldata: Markedrecords,moment: moment});
+          var get_saferes=AllModel.MarkedRecords.find({ companynumber : ph_no , mark: "safe"}).countDocuments();
+          get_saferes.exec((errr,safe_result)=>{
+            var get_saferes=AllModel.MarkedRecords.find({ companynumber : ph_no , mark: "unsafe"}).countDocuments();
+            get_saferes.exec((errr2,unsafe_result)=>{
+              res.render('detail',{CurrentRecord: ph_no,Alldata: Markedrecords,moment: moment,Safe: safe_result, Unsafe: unsafe_result});
+            })
+          
+          })
+         
         })  
       }else{
         res.render('detail',{CurrentRecord: '',Alldata: '',moment: moment});
