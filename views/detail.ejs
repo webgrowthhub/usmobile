@@ -148,16 +148,25 @@
                                                             </tr>
                                                          </thead>
                                                          <tbody>
-                                                            <tr>
-                                                               <td>103.223.8.150 Bathinda, IN</td>
-                                                               <td>Marked (312) 222-2570 as <button class="badge badge-danger">Unsafe</button></td>
-                                                               <td> ago</td>
-                                                           </tr>
-                                                            <tr>
-                                                               <td>101.0.32.102 Jammu, IN</td>
-                                                               <td>Marked (208) 262-0000 as <button class="badge badge-success">Safe</button></td>
-                                                               <td>1 day, 3 hours, 53 minutes ago</td>
-                                                            </tr>
+                                                            <% if ( typeof(Alldata) !='undefined') { %>
+                                                               <% Alldata.forEach(function(MArkResult) { %>
+                                                                  <tr>
+                                                                     <td><%=MArkResult.IpAdress %></td>
+                                                                     <td>Marked 
+                                                                        
+                                                                       <span class="customPhonenno"><%=CurrentRecord   %> </span>as 
+                                                                      <% if(MArkResult.mark == 'safe'){ %>
+                                                                      <%  var custom_class='badge badge-success'; %>
+                                                                      <% }else{ %>
+                                                                        <%  var custom_class='badge badge-danger'; %>
+                                                                     <%  } %>
+                                                                        <button class="<%=custom_class %>"><%=MArkResult.mark   %></button></td>
+                                                                     <td> <%=moment(MArkResult.MarkTime).fromNow() %></td>
+                                                                 </tr>
+
+
+                                                               <% }) } %>
+                                                          
                                                          </tbody>
                                                       </table>
                                                    </div>

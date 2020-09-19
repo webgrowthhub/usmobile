@@ -127,16 +127,18 @@ app.get('/', function(req, res, next) {
 
   app.post('/mark_number', function(req, res, next) {
     var company_no=req.body.phone_no;
+    var mark_no=req.body.mark;
     var   currentIp=req.ipInfo.ip;
     var IpAddress=currentIp.split(':')[3];
     var city=req.ipInfo.city;
     var country=req.ipInfo.country;
-    var Vistor_Ip=IpAddress+' '+city+' '+country;
+    var Vistor_Ip=IpAddress+' '+city+','+country;
     var date_now=moment(Date.now()).fromNow();
 
       var NewRecord=new AllModel.MarkedRecords({
         companynumber: company_no,
         IpAdress: Vistor_Ip,
+        mark : mark_no
          });
 
           NewRecord.save((err,saved)=>{
@@ -158,9 +160,12 @@ app.get('/', function(req, res, next) {
     var get_res=AllModel.Mobilerecords.find({ companynumber : ph_no }).countDocuments();
     get_res.exec((err,Records)=>{
       if(Records > 0){
-        res.render('detail',{CurrentRecord: ph_no});
+        var get_markedres=AllModel.MarkedRecords.find({ companynumber : ph_no }).limit(4);
+        get_markedres.exec((err,Markedrecords)=>{
+          res.render('detail',{CurrentRecord: ph_no,Alldata: Markedrecords,moment: moment});
+        })  
       }else{
-        res.render('detail',{CurrentRecord: ''});
+        res.render('detail',{CurrentRecord: '',Alldata: '',moment: moment});
       }
     })
     

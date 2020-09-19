@@ -50,7 +50,25 @@ $("#post-like-btn").on("click",function(){
    $.ajax({
                type: "POST",
                url: "/mark_number",
-               data: {'phone_no': company_no},
+               data: {'phone_no': company_no,'mark' : 'safe'},
+               success: function(r){
+                if(r == 'true'){
+                  location.reload();
+                }
+               
+               },
+               error: function (e) {
+                  //   console.log("some error", e);
+               }
+            });
+})
+
+$("#post-dislike-btn").on("click",function(){
+   var company_no=$(this).data("id");
+   $.ajax({
+               type: "POST",
+               url: "/mark_number",
+               data: {'phone_no': company_no,'mark' : 'unsafe'},
                success: function(r){
                 if(r == 'true'){
                   location.reload();
