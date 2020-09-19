@@ -128,7 +128,7 @@ app.get('/', function(req, res, next) {
   app.post('/mark_number', function(req, res, next) {
     var company_no=req.body.phone_no;
     var   currentIp=req.ipInfo.ip;
-    var IpAddress=currentIp.split('-')[3];
+    var IpAddress=currentIp.split(':')[3];
     var city=req.ipInfo.city;
     var country=req.ipInfo.country;
     var Vistor_Ip=IpAddress+' '+city+' '+country;
