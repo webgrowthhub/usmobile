@@ -19,7 +19,7 @@ var RecordsSechema=new mongoose.Schema({
 var MArkSechema=new mongoose.Schema({
     companynumber: String,
     IpAdress: String,
-    MarkTime: String
+    MarkTime: { type: Date, default: Date.now }
    
 })
 

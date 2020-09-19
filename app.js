@@ -124,6 +124,30 @@ app.get('/', function(req, res, next) {
   app.get('/aboutus', function(req, res, next) {
     res.render('aboutus');
   });
+
+  app.post('/mark_number', function(req, res, next) {
+    var company_no=req.body.phone_no;
+    var   currentIp=req.ipInfo.ip;
+    var IpAddress=currentIp.split('-')[3];
+    var city=req.ipInfo.city;
+    var country=req.ipInfo.country;
+    var Vistor_Ip=IpAddress+' '+city+' '+country;
+    var date_now=moment(Date.now()).fromNow();
+
+      var NewRecord=new AllModel.MarkedRecords({
+        companynumber: company_no,
+        IpAdress: Vistor_Ip,
+         });
+
+          NewRecord.save((err,saved)=>{
+            if(saved){
+              return res.send("true");
+            }else{
+              return res.send("false");
+            }
+          })
+
+  });
   
   app.get('/faq', function(req, res, next) {
     res.render('faq');
