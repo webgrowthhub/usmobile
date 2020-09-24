@@ -112,13 +112,9 @@ app.get('/', function(req, res, next) {
     res.render('index', { title: 'Express' });
   });
 
-  app.get('/check', function(req, res, next) {
-  var   currentIp=req.ipInfo.ip;
-    var IpAddress=currentIp.split('-')[3];
-    var city=req.ipInfo.city;
-    var country=req.ipInfo.country;
-    // console.log(moment('2020-09-18 14:59:32').fromNow());
-  });
+  app.get('/users/:userId/', function (req, res) {
+    res.send(req.params.userId)
+  })
   
   
   app.get('/aboutus', function(req, res, next) {
@@ -155,8 +151,8 @@ app.get('/', function(req, res, next) {
     res.render('faq');
   });
   
-  app.get('/phone-number', function(req, res, next) {
-    var ph_no=req.query.ph_no;
+  app.get('/phone-number/:phonenumber/', function(req, res, next) {
+    var ph_no=req.params.phonenumber;
     var get_res=AllModel.Mobilerecords.find({ companynumber : ph_no }).countDocuments();
     get_res.exec((err,Records)=>{
       if(Records > 0){
