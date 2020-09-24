@@ -112,16 +112,11 @@
                                        </div>
                                        <div class="searches-result">
                                           <ul>
-                                             <li><a href="#">(208) 262-0000</a></li>
-                                             <li><a href="#">(405) 583-4910</a></li>
-                                             <li><a href="#">(601) 876-5987</a></li>
-                                             <li><a href="#">(800) 285-8585</a></li>
-                                             <li><a href="#">(800) 347-2683</a></li>
-                                             <li><a href="#">(800) 423-4343</a></li>
-                                             <li><a href="#">(800) 627-8372</a></li>
-                                             <li><a href="#">(800) 847-2911</a></li>
-                                             <li><a href="#">(800) 903-3637</a></li>
-                                             <li><a href="#">(800) 950-5114</a></li>
+                                             <% if ( typeof(random) !='undefined') { %>
+                                                <% random.forEach(function(Result) { %>
+                                                   <li><a href="/phone-number/<%=Result.companynumber  %>"> <span class="customPhonenno"><%=Result.companynumber %></span></a></li>
+
+                                                   <% }) } %>
                                           </ul>
                                        </div>
                                     </div>

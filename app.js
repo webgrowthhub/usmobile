@@ -12,6 +12,7 @@ const cron = require("node-cron");
 const querystring = require('querystring');
 const expressip = require('express-ip');
 const moment = require('moment');
+const SitemapGenerator = require('sitemap-generator');
 
 
 var app = express();
@@ -109,12 +110,59 @@ app.get('/', function(req, res, next) {
 //     }
 
 // })
-    res.render('index', { title: 'Express' });
+var get_randomres=AllModel.Mobilerecords.aggregate([
+  {$sample:{size:10}},
+  { 
+    "$match": {
+        "companynumber": { 
+            "$exists": true, 
+            "$ne": null 
+        }
+    }    
+},
+]);
+get_randomres.exec((err,data)=>{
+  res.render('index', { title: 'Express',random: data });
+})
+   
   });
 
-  app.get('/users/:userId/', function (req, res) {
-    res.send(req.params.userId)
+
+  app.get('/sitemap.xml', function (req, res) {
+   var urllll= ['about', 'javascript.html', 'css.html', 'html5.html'];
+    var sitemap = generate_xml_sitemap(urllll); // get the dynamically generated XML sitemap
+    res.header('Content-Type', 'text/xml');
+    res.send(sitemap);
+    
   })
+
+  app.get('/getRes', function (req, res) {
+    var get_res=AllModel.Mobilerecords.find().limit(1);
+    get_res.exec((err,data)=>{
+      console.log(data);
+    })
+   })
+
+  function generate_xml_sitemap(urll) {
+    // this is the source of the URLs on your site, in this case we use a simple array, actually it could come from the database
+    var urls = urll;
+    // the root of your website - the protocol and the domain name with a trailing slash
+    var root_path = 'http://www.example.com/';
+    // XML sitemap generation starts here
+    var priority = 0.5;
+    var freq = 'monthly';
+    var xml = '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+    for (var i in urls) {
+      xml += '<url>';
+      xml += '<loc>'+ root_path + urls[i] + '</loc>';
+      xml += '<changefreq>'+ freq +'</changefreq>';
+      xml += '<priority>'+ priority +'</priority>';
+      xml += '</url>';
+      i++;
+    }
+    xml += '</urlset>';
+    return xml;
+  }
   
   
   app.get('/aboutus', function(req, res, next) {
@@ -162,14 +210,44 @@ app.get('/', function(req, res, next) {
           get_saferes.exec((errr,safe_result)=>{
             var get_saferes=AllModel.MarkedRecords.find({ companynumber : ph_no , mark: "unsafe"}).countDocuments();
             get_saferes.exec((errr2,unsafe_result)=>{
-              res.render('detail',{CurrentRecord: ph_no,Alldata: Markedrecords,moment: moment,Safe: safe_result, Unsafe: unsafe_result});
+
+              var get_randomres=AllModel.Mobilerecords.aggregate([
+                {$sample:{size:10}},
+                { 
+                  "$match": {
+                      "companynumber": { 
+                          "$exists": true, 
+                          "$ne": null 
+                      }
+                  }    
+              },
+              ]);
+              get_randomres.exec((Geterror,RandomResult)=>{
+                res.render('detail',{CurrentRecord: ph_no,Alldata: Markedrecords,moment: moment,Safe: safe_result, Unsafe: unsafe_result,random: RandomResult});
+              })
+
+             
             })
           
           })
          
         })  
       }else{
-        res.render('detail',{CurrentRecord: '',Alldata: '',moment: moment});
+        var get_randomres=AllModel.Mobilerecords.aggregate([
+          {$sample:{size:10}},
+        { 
+          "$match": {
+              "companynumber": { 
+                  "$exists": true, 
+                  "$ne": null 
+              }
+          }    
+      },]);
+              get_randomres.exec((Geterror,RandomResult)=>{
+                res.render('detail',{CurrentRecord: '',Alldata: '',moment: moment,random: RandomResult});
+
+              })
+      
       }
     })
     
