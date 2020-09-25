@@ -116,7 +116,7 @@ var get_randomres=AllModel.Mobilerecords.aggregate([
     "$match": {
         "companynumber": { 
             "$exists": true, 
-            "$ne": null 
+            "$ne": ' ' 
         }
     }    
 },
@@ -136,6 +136,44 @@ get_randomres.exec((err,data)=>{
     
   })
 
+  app.get('/sitemap.xml/:start', function (req, res) {
+    var skipp=req.params.start;
+    var skip_numbere=parseInt(skipp);
+    var get_res=AllModel.Mobilerecords.find().skip(skip_numbere).limit(50000);
+    get_res.exec((err,data)=>{
+      var sitemap = generate_xml_sitemapURL(data); // get the dynamically generated XML sitemap
+      res.header('Content-Type', 'text/xml');
+      res.send(sitemap);
+    })
+    
+   
+     
+   })
+
+   function generate_xml_sitemapURL(urll) {
+    // this is the source of the URLs on your site, in this case we use a simple array, actually it could come from the database
+  
+    
+    // XML sitemap generation starts here
+    var priority = 0.5;
+    var freq = 'daily';
+    var xml = '<?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+    var i;
+    urll.forEach(function (item) {
+      if(item.companynumber != ''){
+        xml += '<sitemap>';
+        xml += '<loc>http://localhost/'+ item.companynumber  + '</loc>';
+        xml += '<changefreq>'+ freq +'</changefreq>';
+        xml += '<priority>'+ priority +'</priority>';
+        xml += '</sitemap>';
+       
+      } 
+    
+    })
+    xml += '</sitemapindex>';
+    return xml;
+  }
+
   app.get('/getRes', function (req, res) {
     var get_res=AllModel.Mobilerecords.find().limit(1);
     get_res.exec((err,data)=>{
@@ -146,21 +184,23 @@ get_randomres.exec((err,data)=>{
   function generate_xml_sitemap(urll) {
     // this is the source of the URLs on your site, in this case we use a simple array, actually it could come from the database
     var urls = urll;
+    var count= 1000000;
     // the root of your website - the protocol and the domain name with a trailing slash
     var root_path = 'http://www.example.com/';
     // XML sitemap generation starts here
     var priority = 0.5;
-    var freq = 'monthly';
-    var xml = '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
-    for (var i in urls) {
-      xml += '<url>';
-      xml += '<loc>'+ root_path + urls[i] + '</loc>';
-      xml += '<changefreq>'+ freq +'</changefreq>';
-      xml += '<priority>'+ priority +'</priority>';
-      xml += '</url>';
-      i++;
+    var freq = 'daily';
+    var xml = '<?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+    var i;
+    for (i = 0; i <=count; i+=50000) {
+      xml += '<sitemap>';
+      xml += '<loc>http://localhost/sitemap.xml/'+ i  + '</loc>';
+      // xml += '<changefreq>'+ freq +'</changefreq>';
+      // xml += '<priority>'+ priority +'</priority>';
+      xml += '</sitemap>';
+     
     }
-    xml += '</urlset>';
+    xml += '</sitemapindex>';
     return xml;
   }
   
