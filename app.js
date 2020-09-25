@@ -139,7 +139,7 @@ get_randomres.exec((err,data)=>{
   app.get('/sitemap.xml/:start', function (req, res) {
     var skipp=req.params.start;
     var skip_numbere=parseInt(skipp);
-    var get_res=AllModel.Mobilerecords.find().skip(skip_numbere).limit(5000);
+    var get_res=AllModel.Mobilerecords.find().skip(skip_numbere).limit(20000);
     get_res.exec((err,data)=>{
       var sitemap = generate_xml_sitemapURL(data); // get the dynamically generated XML sitemap
       res.header('Content-Type', 'text/xml');
@@ -192,7 +192,7 @@ get_randomres.exec((err,data)=>{
     var freq = 'daily';
     var xml = '<?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
     var i;
-    for (i = 0; i <=count; i+=5000) {
+    for (i = 0; i <=count; i+=20000) {
       xml += '<sitemap>';
       xml += '<loc>http://localhost/sitemap.xml/'+ i  + '</loc>';
       // xml += '<changefreq>'+ freq +'</changefreq>';
