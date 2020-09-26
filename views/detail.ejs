@@ -342,7 +342,7 @@
                                           <ul>
                                              <% if ( typeof(random) !='undefined') { %>
                                                 <% random.forEach(function(Result) { %>
-                                                   <li><a href="/phone-number/<%=Result.companynumber  %>"> <span class="customPhonenno"><%=Result.companynumber %></span></a></li>
+                                                   <li><a href="/<%=Result.companynumber  %>"> <span class="customPhonenno"><%=Result.companynumber %></span></a></li>
 
                                                    <% }) } %>
                                           </ul>
