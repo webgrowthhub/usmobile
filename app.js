@@ -239,7 +239,7 @@ get_randomres.exec((err,data)=>{
     res.render('faq');
   });
   
-  app.get('/phone-number/:phonenumber/', function(req, res, next) {
+  app.get('/:phonenumber/', function(req, res, next) {
     var ph_no=req.params.phonenumber;
     var get_res=AllModel.Mobilerecords.find({ companynumber : ph_no }).countDocuments();
     get_res.exec((err,Records)=>{
