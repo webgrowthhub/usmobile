@@ -115,18 +115,34 @@ var get_randomres=AllModel.Mobilerecords.aggregate([
   { 
     "$match": {
         "companynumber": { 
-            "$exists": true, 
-            "$ne": ' ' 
+          "$ne": '' 
         }
     }    
 },
 ]);
 get_randomres.exec((err,data)=>{
+  console.log(data);
   res.render('index', { title: 'Express',random: data });
 })
    
   });
 
+  app.get('/terms-of-use', function (req, res) {
+    res.render("terms-of-use");  
+   })
+
+   app.get('/privacy-policy', function (req, res) {
+    res.render("privacy-policy");  
+   })
+
+   
+   app.get('/number-removal', function (req, res) {
+    res.render("number-removal");  
+   })
+
+   app.get('/contact-us', function (req, res) {
+    res.render("contact-us");  
+   })
 
   app.get('/sitemap.xml', function (req, res) {
    var urllll= ['about', 'javascript.html', 'css.html', 'html5.html'];
