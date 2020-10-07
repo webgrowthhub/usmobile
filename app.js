@@ -210,7 +210,7 @@ get_randomres.exec((err,data)=>{
     var i;
     for (i = 0; i <=count; i+=20000) {
       xml += '<sitemap>';
-      xml += '<loc>http://localhost/sitemap.xml/'+ i  + '</loc>';
+      xml += '<loc>http://159.89.238.39/'+ i  + '</loc>';
       // xml += '<changefreq>'+ freq +'</changefreq>';
       // xml += '<priority>'+ priority +'</priority>';
       xml += '</sitemap>';
