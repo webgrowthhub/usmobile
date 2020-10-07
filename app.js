@@ -178,7 +178,7 @@ get_randomres.exec((err,data)=>{
     urll.forEach(function (item) {
       if(item.companynumber != ''){
         xml += '<sitemap>';
-        xml += '<loc>http://localhost/'+ item.companynumber  + '</loc>';
+        xml += '<loc>http://159.89.238.39/'+ item.companynumber  + '</loc>';
         xml += '<changefreq>'+ freq +'</changefreq>';
         xml += '<priority>'+ priority +'</priority>';
         xml += '</sitemap>';
