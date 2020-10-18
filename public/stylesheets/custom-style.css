@@ -1060,13 +1060,73 @@ input[type="button"]{
     position: relative;
     background-color: #ffffff;
     width: 100%;
-    z-index:8000;
+    z-index:99;
     box-shadow:0px 0px 2px 1px rgba(0, 0, 0, 0.16);
     -webkit-transition: background 0.2s;
        -moz-transition: background 0.2s;
         -ms-transition: background 0.2s;
          -o-transition: background 0.2s;
             transition: background 0.2s;
+}
+div#myModal h4.modal-title {
+    display: none;
+}
+
+div#myModal .modal-header .close {
+    position: absolute;
+    right: -12px;
+    top: -5px;
+    background: #040404;
+    opacity: 1;
+    text-shadow: 0 0 black;
+    color: #fff;
+    border: 1px solid;
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
+    font-size: 19px;
+    z-index: 9;
+}
+div#myModal .modal-body h4 {
+    font-size: 26px;
+    line-height: 30px;
+}
+
+div#myModal .modal-dialog {
+    -webkit-transform: translate(0,50%);
+    -ms-transform: translate(0,50%);
+    -o-transform: translate(0,50%);
+    transform: translate(0,50%);
+}
+
+
+div#myModal .modal-body button {
+    color: #fff;
+    border-radius: 4px !important;
+    padding: 8px 16px;
+    border: 0;
+    margin-top: 10px;
+    margin-right: 6px;
+}
+div#myModal .modal-body button:hover {
+    box-shadow: 0px 2px 5px #c6c6c6;
+}
+
+div#myModal .modal-body > div {
+    border-color: #6e6e6e !important;
+    border-width: 6px !important;
+}
+
+div#myModal .modal-header {
+    padding: 0;
+    bottom: 0;
+    border: none;
+}
+
+div#myModal .modal-body {
+    padding: 0;
+    border: none;
+    outline: 0;
 }
 
 .logo{
