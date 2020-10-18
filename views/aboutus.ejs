@@ -63,7 +63,13 @@
          
                                  </div>
                             <div class="searches-result">
-                                     <ul><li><a href="../phone-number/2082620000/index.html">(208) 262-0000</a></li> <li><a href="../phone-number/4055834910/index.html">(405) 583-4910</a></li> <li><a href="../phone-number/6018765987/index.html">(601) 876-5987</a></li> <li><a href="../phone-number/8002858585/index.html">(800) 285-8585</a></li> <li><a href="../phone-number/8003472683/index.html">(800) 347-2683</a></li> <li><a href="../phone-number/8004234343/index.html">(800) 423-4343</a></li> <li><a href="../phone-number/8006278372/index.html">(800) 627-8372</a></li> <li><a href="../phone-number/8008472911/index.html">(800) 847-2911</a></li> <li><a href="../phone-number/8009033637/index.html">(800) 903-3637</a></li> <li><a href="../phone-number/8009505114/index.html">(800) 950-5114</a></li> </ul>
+                                     <ul>
+                                       <% if ( typeof(random) !='undefined') { %>
+                                          <% random.forEach(function(Result) { %>
+                                             <li><a href="/<%=Result.companynumber  %>"> <span class="customPhonenno"><%=Result.companynumber %></span></a></li>
+
+                                             <% }) } %>
+                                              </ul>
                                </div>
                                  </div>
                                </div>

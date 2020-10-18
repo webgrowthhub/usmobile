@@ -29,6 +29,9 @@
 <script src="http://code.jquery.com//ui/1.12.1/jquery-ui.js"></script>
 <script type='text/javascript' src='../javascripts/jquery-input-mask-phone-number.js'></script>
       <script type='text/javascript' src='../javascripts/jquery-input-mask-phone-number.min'></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script>
   $("#mobile-navigation-btn").click(function(){
 $("#mobile-navigation").toggleClass("view");
@@ -37,6 +40,8 @@ $("#mobile-navigation").toggleClass("view");
 
 <script>
    $(function(){
+
+      $(".modal").modal('show');
       
       $('#customPhonenno').usPhoneFormat({
     format:'(xxx) xxx-xxxx'

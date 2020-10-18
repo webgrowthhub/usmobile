@@ -222,7 +222,21 @@ get_randomres.exec((err,data)=>{
   
   
   app.get('/aboutus', function(req, res, next) {
-    res.render('aboutus');
+    var get_randomres=AllModel.Mobilerecords.aggregate([
+      {$sample:{size:10}},
+      { 
+        "$match": {
+          "companynumber": { 
+            "$ne": '' 
+          }
+        }    
+    },
+    ]);
+    get_randomres.exec((Geterror,RandomResult)=>{
+      res.render('aboutus',{random: RandomResult});
+
+    })
+    
   });
 
   app.post('/mark_number', function(req, res, next) {
