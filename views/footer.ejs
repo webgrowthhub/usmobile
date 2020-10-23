@@ -30,7 +30,7 @@
 <script type='text/javascript' src='../javascripts/jquery-input-mask-phone-number.js'></script>
       <script type='text/javascript' src='../javascripts/jquery-input-mask-phone-number.min'></script>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script>
   $("#mobile-navigation-btn").click(function(){
@@ -69,7 +69,43 @@ $("#post-like-btn").on("click",function(){
             });
 })
 
+$("#post-like-btn2").on("click",function(){
+   var company_no=$(this).data("id");
+   $.ajax({
+               type: "POST",
+               url: "/mark_number",
+               data: {'phone_no': company_no,'mark' : 'safe'},
+               success: function(r){
+                if(r == 'true'){
+                  location.reload();
+                }
+               
+               },
+               error: function (e) {
+                  //   console.log("some error", e);
+               }
+            });
+})
+
 $("#post-dislike-btn").on("click",function(){
+   var company_no=$(this).data("id");
+   $.ajax({
+               type: "POST",
+               url: "/mark_number",
+               data: {'phone_no': company_no,'mark' : 'unsafe'},
+               success: function(r){
+                if(r == 'true'){
+                  location.reload();
+                }
+               
+               },
+               error: function (e) {
+                  //   console.log("some error", e);
+               }
+            });
+})
+
+$("#post-dislike-btn2").on("click",function(){
    var company_no=$(this).data("id");
    $.ajax({
                type: "POST",
