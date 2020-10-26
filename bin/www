@@ -21,13 +21,12 @@ app.set('port', port);
  * Create HTTP server.
  */
 var https_options = {
- 
+  key:  fs.readFileSync(path.join(__dirname, "../ssl/usphonenumberlookup_com.key")),
   cert: fs.readFileSync(path.join(__dirname, "../ssl/usphonenumberlookup_com.crt")),
-  
-   ca: [
-      fs.readFileSync(path.join(__dirname, '../ssl/usphonenumberlookup_com.ca-bundle')),
-     fs.readFileSync(path.join(__dirname, "../ssl/da8b5_ee1d1_e6ddd663ef857c330f06ca43769dbb23.key")),
-    
+  ca: [
+  fs.readFileSync(path.join(__dirname, '../ssl/USERTrustRSAAAACA.crt')),
+  fs.readFileSync(path.join(__dirname, '../ssl/SectigoRSADomainValidationSecureServerCA.crt')),
+  fs.readFileSync(path.join(__dirname, '../ssl/My_CA_Bundle.ca-bundle')),
   ]
   };
 
