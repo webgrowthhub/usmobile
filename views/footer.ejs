@@ -22,13 +22,13 @@
 </div>
 <!-- end wrapall / boxed -->
 <div id="back-to-top"><a href="#"><i class="fa fa-chevron-up"></i></a></div>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="http://code.jquery.com//jquery-1.12.4.js"></script>
+<script src="../stylesheets/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../stylesheets/jquery-ui.css">
+<script src="../javascripts/jquery-1.12.4.js"></script>
 <script src="../javascripts/vc-accordion.js"></script>
-<script src="http://code.jquery.com//ui/1.12.1/jquery-ui.js"></script>
+<script src="../javascripts/jquery-ui.js"></script>
 <script type='text/javascript' src='../javascripts/jquery-input-mask-phone-number.js'></script>
-      <script type='text/javascript' src='../javascripts/jquery-input-mask-phone-number.min'></script>
+      <script type='text/javascript' src='../javascripts/jquery-input-mask-phone-number.min.js'></script>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -141,7 +141,7 @@ if(cleanNumber.toString().length >= 5){
                   }else{
                      r.forEach(function (item) { 
                      
-                     $("#result_ui").append('<li class="li_number" data-name="'+item.companynumber+'" data-attr="http://159.89.238.39/'+item.companynumber+'"><a href="http://159.89.238.39/'+item.companynumber+'">'+item.companynumber+'</a></li>');
+                     $("#result_ui").append('<li class="li_number" data-name="'+item.companynumber+'" data-attr="'+item.companynumber+'"><a href="'+item.companynumber+'">'+item.companynumber+'</a></li>');
         }); 
                   }
           

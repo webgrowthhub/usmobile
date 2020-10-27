@@ -121,7 +121,6 @@ var get_randomres=AllModel.Mobilerecords.aggregate([
 },
 ]);
 get_randomres.exec((err,data)=>{
-  console.log(data);
   res.render('index', { title: 'Express',random: data });
 })
    
