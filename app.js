@@ -177,7 +177,7 @@ get_randomres.exec((err,data)=>{
     urll.forEach(function (item) {
       if(item.companynumber != ''){
         xml += '<sitemap>';
-        xml += '<loc>http://159.89.238.39/'+ item.companynumber  + '</loc>';
+        xml += '<loc>https://usphonenumberlookup.com/'+ item.companynumber  + '</loc>';
         xml += '<changefreq>'+ freq +'</changefreq>';
         xml += '<priority>'+ priority +'</priority>';
         xml += '</sitemap>';
@@ -209,7 +209,7 @@ get_randomres.exec((err,data)=>{
     var i;
     for (i = 0; i <=count; i+=20000) {
       xml += '<sitemap>';
-      xml += '<loc>http://159.89.238.39/sitemap.xml/'+ i  + '</loc>';
+      xml += '<loc>https://usphonenumberlookup.com/sitemap.xml/'+ i  + '</loc>';
       // xml += '<changefreq>'+ freq +'</changefreq>';
       // xml += '<priority>'+ priority +'</priority>';
       xml += '</sitemap>';
