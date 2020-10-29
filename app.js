@@ -115,7 +115,7 @@ var get_randomres=AllModel.Mobilerecords.aggregate([
   { 
     "$match": {
         "companynumber": { 
-          "$ne": '' 
+          "$ne": '' ,
         }
     }    
 },
@@ -265,7 +265,21 @@ get_randomres.exec((err,data)=>{
   });
   
   app.get('/faq', function(req, res, next) {
-    res.render('faq');
+    var get_randomres=AllModel.Mobilerecords.aggregate([
+      {$sample:{size:10}},
+      { 
+        "$match": {
+            "companynumber": { 
+              "$ne": '' ,
+            }
+        }    
+    },
+    ]);
+    get_randomres.exec((Geterror,RandomResult)=>{
+      res.render('faq',{random: RandomResult});
+
+    })
+    
   });
   
   app.get('/:phonenumber/', function(req, res, next) {

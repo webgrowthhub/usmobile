@@ -114,7 +114,10 @@
                                           <ul>
                                              <% if ( typeof(random) !='undefined') { %>
                                                 <% random.forEach(function(Result) { %>
-                                                   <li><a href="/<%=Result.companynumber  %>"> <span class="customPhonenno"><%=Result.companynumber %></span></a></li>
+                                                   <% if(Result.companynumber.length >= 10){ %>
+                                                      <li><a href="/<%=Result.companynumber  %>"> <span class="customPhonenno"><%=Result.companynumber %></span></a></li>
+                                                  <% } %>
+                                                  
 
                                                    <% }) } %>
                                           </ul>

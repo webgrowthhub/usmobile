@@ -3,7 +3,7 @@
             <div class="container">
                <div class="sixteen columns">
                   <div id="mobile-logo" class="logo">
-                     <a href="index.html"><img src="img/USP-Logo-4.png" alt="logo"></a>
+                     <a href="/"><img src="img/USP-Logo-4.png" alt="logo"></a>
                   </div>
                   <a href="#" id="mobile-navigation-btn"><i class="fa fa-bars"></i></a>
                </div>
@@ -14,8 +14,8 @@
                <div class="sixteen columns">
                   <div class="menu-top-menu-container">
                      <ul id="mobile-nav" class="menu">
-                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-318"><a href="about-us.html">About</a></li>
-                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-319"><a href="faqs.html">FAQs</a></li>
+                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-318"><a href="aboutus">About</a></li>
+                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-319"><a href="faq">FAQs</a></li>
                      </ul>
                   </div>
                
@@ -34,7 +34,7 @@
 						<h1>About</h1>
 					</div>
 					<div id="breadcrumbs" class="six columns">
-						<div id="crumbs"><a href="../index.html">US Phone Number Lookup</a> / <span class="current">About</span></div>					</div>
+						<div id="crumbs"><a href="/">US Phone Number Lookup</a> / <span class="current">About</span></div>					</div>
 				</div>
 			</div>
          <div class="container"  >
@@ -66,9 +66,10 @@
                                      <ul>
                                        <% if ( typeof(random) !='undefined') { %>
                                           <% random.forEach(function(Result) { %>
+                                             <% if(Result.companynumber.length >= 10){ %>
                                              <li><a href="/<%=Result.companynumber  %>"> <span class="customPhonenno"><%=Result.companynumber %></span></a></li>
 
-                                             <% }) } %>
+                                             <% } }) } %>
                                               </ul>
                                </div>
                                  </div>

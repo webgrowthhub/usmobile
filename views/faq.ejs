@@ -3,7 +3,7 @@
             <div class="container">
                <div class="sixteen columns">
                   <div id="mobile-logo" class="logo">
-                     <a href="index.html"><img src="img/USP-Logo-4.png" alt="logo"></a>
+                     <a href="/"><img src="img/USP-Logo-4.png" alt="logo"></a>
                   </div>
                   <a href="#" id="mobile-navigation-btn"><i class="fa fa-bars"></i></a>
                </div>
@@ -14,8 +14,8 @@
                <div class="sixteen columns">
                   <div class="menu-top-menu-container">
                      <ul id="mobile-nav" class="menu">
-                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-318"><a href="about-us.html">About</a></li>
-                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-319"><a href="faqs.html">FAQs</a></li>
+                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-318"><a href="aboutus">About</a></li>
+                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-319"><a href="faq">FAQs</a></li>
                      </ul>
                   </div>
                   <form method="post" id="submit_search" class="header_submit_serach">
@@ -33,7 +33,7 @@
                   <h1>FAQs</h1>
                </div>
                <div id="breadcrumbs" class="six columns">
-                  <div id="crumbs"><a href="index.html">US Phone Number Lookup</a> / <span class="current">FAQs</span></div>
+                  <div id="crumbs"><a href="/">US Phone Number Lookup</a> / <span class="current">FAQs</span></div>
                </div>
             </div>
          </div>
@@ -125,16 +125,12 @@
                                        </div>
                                        <div class="searches-result">
                                           <ul>
-                                             <li><a href="number-details.html">(208) 262-0000</a></li>
-                                             <li><a href="number-details.html">(405) 583-4910</a></li>
-                                             <li><a href="number-details.html">(601) 876-5987</a></li>
-                                             <li><a href="number-details.html">(800) 285-8585</a></li>
-                                             <li><a href="number-details.html">(800) 347-2683</a></li>
-                                             <li><a href="number-details.html">(800) 423-4343</a></li>
-                                             <li><a href="number-details.html">(800) 627-8372</a></li>
-                                             <li><a href="number-details.html">(800) 847-2911</a></li>
-                                             <li><a href="number-details.html">(800) 903-3637</a></li>
-                                             <li><a href="number-details.html">(800) 950-5114</a></li>
+                                             <% if ( typeof(random) !='undefined') { %>
+                                                <% random.forEach(function(Result) { %>
+                                                   <% if(Result.companynumber.length >= 10){ %>
+                                                   <li><a href="/<%=Result.companynumber  %>"> <span class="customPhonenno"><%=Result.companynumber %></span></a></li>
+      
+                                                   <% } }) } %>
                                           </ul>
                                        </div>
                                     </div>
