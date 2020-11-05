@@ -13,6 +13,7 @@ const querystring = require('querystring');
 const expressip = require('express-ip');
 const moment = require('moment');
 const SitemapGenerator = require('sitemap-generator');
+var localStorage = require('localStorage')
 
 
 var app = express();
@@ -284,6 +285,7 @@ get_randomres.exec((err,data)=>{
   
   app.get('/:phonenumber/', function(req, res, next) {
     var ph_no=req.params.phonenumber;
+
     var get_res=AllModel.Mobilerecords.find({ companynumber : ph_no }).countDocuments();
     get_res.exec((err,Records)=>{
       if(Records > 0){

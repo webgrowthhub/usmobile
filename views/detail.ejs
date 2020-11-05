@@ -448,4 +448,203 @@
       </div>
    </div>
          <!-- end page-wrap -->
-        <%- include footer.ejs %>
+         <div id="copyright" class="clearfix">
+            <div class="container">
+               <div class="sixteen columns">
+                  <div class="copyright-text copyright-col1">
+                     Copyright © 2019-2020 US Phone Number Lookup. All Rights Reserved.
+                     The information contained on this website is gathered from publicly available sources and is provided to you on an "as-is" basis, and may not be accurate, complete or up to date. You should not use the information contained on this website for any purpose under the Fair Credit Reporting Act ("FCRA"), codified at 15 USC 1681 et seq. You agree that you will not use any information contained on this website to make any decisions about any consumer credit, employment, tenant screening, or any other purpose that would require FCRA compliance. 
+                  </div>
+                  <div class="copyright-col2">
+                     <div class="menu-footer-menu-container">
+                        <ul id="menu-footer-menu" class="menu">
+                           <li id="menu-item-35" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35"><a href="/terms-of-use">Terms of Use</a></li>
+                           <li id="menu-item-37" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-37"><a href="/privacy-policy">Privacy Policy</a></li>
+                           <li id="menu-item-38" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-38"><a href="/number-removal">Number Removal</a></li>
+                           <li id="menu-item-36" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-36"><a href="/contact-us">Contact Us</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- end copyright -->
+        </div>
+        <!-- end wrapall / boxed -->
+        <div id="back-to-top"><a href="#"><i class="fa fa-chevron-up"></i></a></div>
+        <script src="../stylesheets/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="../stylesheets/jquery-ui.css">
+        <script src="../javascripts/jquery-1.12.4.js"></script>
+        <script src="../javascripts/vc-accordion.js"></script>
+        <script src="../javascripts/jquery-ui.js"></script>
+        <script type='text/javascript' src='../javascripts/jquery-input-mask-phone-number.js'></script>
+              <script type='text/javascript' src='../javascripts/jquery-input-mask-phone-number.min.js'></script>
+              <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+          <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script>
+          $("#mobile-navigation-btn").click(function(){
+        $("#mobile-navigation").toggleClass("view");
+        });
+        </script>
+        
+        <script>
+           $(function(){
+           if(localStorage.getItem(window.location.pathname) != 'shown'){
+            localStorage.setItem(window.location.pathname,'shown');
+               $(".modal").modal('show');
+             
+    } 
+              
+              $('#customPhonenno').usPhoneFormat({
+            format:'(xxx) xxx-xxxx'
+          });
+        
+          $('.customPhonenno').text(function(i, text) {
+            return text.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+        });
+        
+        $("#post-like-btn").on("click",function(){
+           var company_no=$(this).data("id");
+           $.ajax({
+                       type: "POST",
+                       url: "/mark_number",
+                       data: {'phone_no': company_no,'mark' : 'safe'},
+                       success: function(r){
+                        if(r == 'true'){
+                          location.reload();
+                        }
+                       
+                       },
+                       error: function (e) {
+                          //   console.log("some error", e);
+                       }
+                    });
+        })
+        
+        $("#post-like-btn2").on("click",function(){
+           var company_no=$(this).data("id");
+           $.ajax({
+                       type: "POST",
+                       url: "/mark_number",
+                       data: {'phone_no': company_no,'mark' : 'safe'},
+                       success: function(r){
+                        if(r == 'true'){
+                          location.reload();
+                        }
+                       
+                       },
+                       error: function (e) {
+                          //   console.log("some error", e);
+                       }
+                    });
+        })
+        
+        $("#post-dislike-btn").on("click",function(){
+           var company_no=$(this).data("id");
+           $.ajax({
+                       type: "POST",
+                       url: "/mark_number",
+                       data: {'phone_no': company_no,'mark' : 'unsafe'},
+                       success: function(r){
+                        if(r == 'true'){
+                          location.reload();
+                        }
+                       
+                       },
+                       error: function (e) {
+                          //   console.log("some error", e);
+                       }
+                    });
+        })
+        
+        $("#post-dislike-btn2").on("click",function(){
+           var company_no=$(this).data("id");
+           $.ajax({
+                       type: "POST",
+                       url: "/mark_number",
+                       data: {'phone_no': company_no,'mark' : 'unsafe'},
+                       success: function(r){
+                        if(r == 'true'){
+                          location.reload();
+                        }
+                       
+                       },
+                       error: function (e) {
+                          //   console.log("some error", e);
+                       }
+                    });
+        })
+        
+          $('#customPhonenno').on("keyup",function(){
+             var inputNo=$("#customPhonenno").val();
+        var cleanNumber =  inputNo.replace(/[^\d.]/g, ''); 
+        if(cleanNumber.toString().length >= 5){
+            $.ajax({
+                       type: "POST",
+                       url: "/get_results",
+                       data: {'phone_no': cleanNumber},
+                       success: function(r){
+                          $(".curentResult").show();
+                          $("#result_ui").html('');
+                         
+                          if(r == 'false'){
+                             $("#result_ui").append('<li class="li_number" >No record Found</li>');
+                
+                          }else{
+                             r.forEach(function (item) { 
+                             
+                             $("#result_ui").append('<li class="li_number" data-name="'+item.companynumber+'" data-attr="'+item.companynumber+'"><a href="'+item.companynumber+'">'+item.companynumber+'</a></li>');
+                }); 
+                          }
+                  
+                       // location.reload();
+                       },
+                       error: function (e) {
+                          //   console.log("some error", e);
+                       }
+                    });
+        }
+                
+          })
+        
+        
+         
+        
+        
+           })
+        </script>
+        
+        
+        <script>
+        //      $(function(){
+        //       $.ajax({
+        //      type: "POST",
+        //      url: "/totalrecords",
+        //      data: {'product_id': 'check'},
+        //     success: function(r){
+        //   var totoalrecords= r['total'];
+        
+        //   for(var i=0; i<2; i++){
+        //    $.ajax({
+        //      type: "POST",
+        //      url: "/getalldata",
+        //      data: {'Offsetcount': i},
+        //     success: function(r){
+        
+        //    //  alert(r);
+        
+        //      }
+        
+        //  });
+        //   }
+        
+        
+        //      }
+        
+        //  });
+        //      })
+        </script>
+        
+        </body>
+        </html>
