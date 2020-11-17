@@ -64,12 +64,16 @@
                                  </div>
                             <div class="searches-result">
                                      <ul>
+                                               
                                        <% if ( typeof(random) !='undefined') { %>
-                                          <% random.forEach(function(Result) { %>
-                                             <% if(Result.companynumber.length >= 10){ %>
-                                             <li><a href="/<%=Result.companynumber  %>"> <span class="customPhonenno"><%=Result.companynumber %></span></a></li>
+                                               
+                                          <%  for (i = 0; i < 10; i++) { %>
+                                             <% if(random[i].companynumber.length >= 10){ %>
+                                                <li><a href="/<%=random[i].companynumber  %>"> <span class="customPhonenno"><%=random[i].companynumber %></span></a></li>
+                                            <% } %>
+                                            
 
-                                             <% } }) } %>
+                                             <% } } %>
                                               </ul>
                                </div>
                                  </div>

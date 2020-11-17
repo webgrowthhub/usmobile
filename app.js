@@ -112,14 +112,15 @@ app.get('/', function(req, res, next) {
 
 // })
 var get_randomres=AllModel.Mobilerecords.aggregate([
-  {$sample:{size:10}},
+  {$sample:{size:20}},
   { 
     "$match": {
         "companynumber": { 
           "$ne": '' ,
-        }
-    }    
+        },
+    },    
 },
+
 ]);
 get_randomres.exec((err,data)=>{
   res.render('index', { title: 'Express',random: data });
@@ -223,7 +224,7 @@ get_randomres.exec((err,data)=>{
   
   app.get('/aboutus', function(req, res, next) {
     var get_randomres=AllModel.Mobilerecords.aggregate([
-      {$sample:{size:10}},
+      {$sample:{size:20}},
       { 
         "$match": {
           "companynumber": { 
@@ -267,7 +268,7 @@ get_randomres.exec((err,data)=>{
   
   app.get('/faq', function(req, res, next) {
     var get_randomres=AllModel.Mobilerecords.aggregate([
-      {$sample:{size:10}},
+      {$sample:{size:20}},
       { 
         "$match": {
             "companynumber": { 
